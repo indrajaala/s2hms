@@ -46,8 +46,8 @@ s2hms(8573, {format: 'long', separator: '__'})
 example with separator: '/' and format: 'short'
 
 ```js
-s2hms(9832, {format: 'short', separator: '/'});
-// => 2h/43m/52s
+s2hms(983, {format: 'short', separator: '/'});
+// => 16m/23s
 
 ```
 
