@@ -43,6 +43,8 @@ s2hms(8573, {format: 'long', separator: '__'})
 | format |'long', 'short' | `string` | none |
 | separator | any string char ':' , '+' , '=' , '_' ,'-' , etc... | `string` | ':' |
   
+  
+  
 example with separator: '/' and format: 'short'
 
 ```js
