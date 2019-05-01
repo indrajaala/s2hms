@@ -87,9 +87,7 @@ takes two arguments :  seconds (`number`) , options (`object` optional)
 | fallback | true, false | `boolean` | false |
 
 **note:**
-
 fallback can be used only when a format is specified , if no format is specified and fallback is set to true , it will throw an error
-
 `Error: option'fallback:true' can only be used when a format is specified`
 
 
