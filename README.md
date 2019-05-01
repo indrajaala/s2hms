@@ -9,7 +9,9 @@ $ npm install --save s2hms
 
 ## Usage
 
-contains two types of modules :
+contains two types of modules : 1) s2hms, 2) s2h, s2m, s2s
+
+takes two arguments:  seconds (`number`) , options (optional)
 
 1) s2hms : converts seconds to 'hms' format.
 
@@ -40,4 +42,4 @@ s2hms(24535, {format: 'long'});
 
 ## License
 
-MIT @ [Michael Wuergler](http://www.numetriclabs.com)
+MIT
