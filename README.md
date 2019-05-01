@@ -16,6 +16,15 @@ contains two types of modules :
 ```js
 const {s2hms} = require('s2hms');
 
+s2hms(4342);
+// => 1:12:22
+
+s2hms(64567, {format: 'short'});
+// => 17h:56m:7s
+
+s2hms(24535, {format: 'long'});
+// => 6 hours:48 minutes:55 seconds
+
 ```
 
 2) ( s2h, s2m, s2s ) : converts seconds to hours(s2h) or minutes(s2m) or seconds(s2s).
