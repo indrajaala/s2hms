@@ -1,5 +1,5 @@
 # s2hms
-> convert seconds to HMS (or) to hours, minutes, seconds independently.
+> convert seconds to HMS (or) to either hours or minutes or seconds.
 
 ## Install
 
