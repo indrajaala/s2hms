@@ -45,6 +45,17 @@ takes two arguments :  seconds (`number`) , options (`object` optional)
  const {s2m} = require('s2hms'); 
  const {s2s} = require('s2hms'); 
 
+ s2h(43434);
+ // => 12.1
+ 
+ s2m(9832, { format: "short" });
+ // => 163.9 m
+ 
+ s2m(98907, { format: "long" });
+ // => 1648.5 minutes
+ 
+ s2s(9832, { format: "short" });
+ // => 9832 s
  
 
 ```
