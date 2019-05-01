@@ -75,6 +75,12 @@ takes two arguments :  seconds (`number`) , options (`object` optional)
 
 ```
 
+#### options
+
+| **key** | **val** | **default val** |
+| --- | --- | --- |
+| format | 'long', 'short' | none |
+| fallback | true, false | false |
 
 
 ## License
