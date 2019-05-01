@@ -30,6 +30,9 @@ s2hms(64567, {format: 'short'});
 s2hms(24535, {format: 'long'});
 // => 6 hours:48 minutes:55 seconds
 
+s2hms(8573, {format: 'long', separator: '__'})
+// => 2 hours__22 minutes__53 seconds
+
 ```
 
 ### 2) ( s2h, s2m, s2s ) : converts seconds to either hours or minutes or seconds.
