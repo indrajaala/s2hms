@@ -41,9 +41,9 @@ s2hms(8573, {format: 'long', separator: '__'})
 | **key** | **val** | **default val** |
 | --- | --- | --- |
 | format | 'long', 'short' | none |
-| separator | any string char, ex: ':' , '=' , '_' , '-' , etc... | ':' |
+| separator | any string char ':' , '=' , '_' , '-' , etc... | ':' |
   
-example with separator '/' and format 'long'
+example with separator: '/' and format: 'short'
 
 ```js
 s2hms(9832, {format: 'short', separator: '/'});
