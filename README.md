@@ -40,8 +40,8 @@ s2hms(8573, {format: 'long', separator: '__'})
 
 | **key** | **val** | **default val** |
 | --- | --- | --- |
-| format | 'long', 'short' | none |
-| separator | any string char ':' , '+' , '=' , '_' ,'-' , etc... | ':' |
+| format |`string` 'long', 'short' | none |
+| separator |`string` any string char ':' , '+' , '=' , '_' ,'-' , etc... | ':' |
   
 example with separator: '/' and format: 'short'
 
@@ -79,8 +79,8 @@ takes two arguments :  seconds (`number`) , options (`object` optional)
 
 | **key** | **val** | **default val** |
 | --- | --- | --- |
-| format | 'long', 'short' | none |
-| fallback | true, false | false |
+| format |`string` 'long', 'short' | none |
+| fallback |`boolean` true, false | false |
 
 
 ## License
