@@ -36,6 +36,14 @@ s2hms(8573, {format: 'long', separator: '__'})
 
 ```
 
+#### options
+
+| **key** | **val** | 
+| --- | --- |
+| format | 'long', 'short' |
+| seperator | any string char, ex: ':' , '=' , '_' , '-' , etc... |  
+
+
 ### 2) ( s2h, s2m, s2s ) : converts seconds to either hours or minutes or seconds.
 
 takes two arguments :  seconds (`number`) , options (`object` optional)
