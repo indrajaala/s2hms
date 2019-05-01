@@ -121,7 +121,7 @@ s2m(46, {format: 'long', fallback: true});
 fallback can be used only when a format is specified , if no format is specified and fallback is set to true , it will throw an error, this is to prevent confusion of unit of resulting value.
 
 ```js
-s2m(46, {format: 'long', fallback: true});
+s2h(634, {fallback: true});
 // => Error: option'fallback:true' can only be used when a format is specified
 ```
 
