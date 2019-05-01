@@ -14,7 +14,7 @@ contains two types of modules :
 1. s2hms
 2. s2h, s2m, s2s
 
-takes two arguments:  seconds (`number`) , options (`object` optional)
+takes two arguments :  seconds (`number`) , options (`object` optional)
 
 ### 1) s2hms : converts seconds to 'hms' format.
 
