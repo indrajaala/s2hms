@@ -13,7 +13,7 @@ contains two types of modules : 1) s2hms, 2) s2h, s2m, s2s
 
 takes two arguments:  seconds (`number`) , options (optional)
 
-## 1) s2hms : converts seconds to 'hms' format.
+### 1) s2hms : converts seconds to 'hms' format.
 
 ```js
 const {s2hms} = require('s2hms');
@@ -29,7 +29,7 @@ s2hms(24535, {format: 'long'});
 
 ```
 
-## 2) ( s2h, s2m, s2s ) : converts seconds to hours or minutes or seconds.
+### 2) ( s2h, s2m, s2s ) : converts seconds to hours or minutes or seconds.
 
 ```js
  const {s2h, s2m, s2s} = require('s2hms'); 
