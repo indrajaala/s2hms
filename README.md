@@ -9,9 +9,9 @@ contains two types of modules :
 
 2) ( s2h, s2m, s2s ) : converts seconds to hours(s2h) or minutes(s2m) or seconds(s2s).
 
-` const {s2h} = require('s2h'); `
+` const {s2h} = require('s2hms'); `
 
-` const {s2m} = require('s2m'); `
+` const {s2m} = require('s2hms'); `
 
-` const {s2s} = require('s2s'); `
+` const {s2s} = require('s2hms'); `
 
