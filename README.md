@@ -9,7 +9,10 @@ $ npm install --save s2hms
 
 ## Usage
 
-contains two types of modules : 1) s2hms, 2) s2h, s2m, s2s
+contains two types of modules : 
+
+1. s2hms
+2. s2h, s2m, s2s
 
 takes two arguments:  seconds (`number`) , options (optional)
 
