@@ -28,8 +28,8 @@ s2hms(4342);
 s2hms(64567, {format: 'short'});
 // => 17h:56m:7s
 
-s2hms(24535, {format: 'long'});
-// => 6 hours:48 minutes:55 seconds
+s2hms(432, { format: "long" });
+// => 7 minutes:12 seconds
 
 s2hms(8573, {format: 'long', separator: '__'})
 // => 2 hours__22 minutes__53 seconds
@@ -41,7 +41,7 @@ s2hms(8573, {format: 'long', separator: '__'})
 | **key** | **val** | **default val** |
 | --- | --- | --- |
 | format | 'long', 'short' | none |
-| separator | any string char ':' , '=' , '_' , '-' , etc... | ':' |
+| separator | any string char ':' , '+' , '=' , '_' , '|' ,'-' , etc... | ':' |
   
 example with separator: '/' and format: 'short'
 
