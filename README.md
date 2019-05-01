@@ -38,6 +38,8 @@ s2hms(8573, {format: 'long', separator: '__'})
 
 ### 2) ( s2h, s2m, s2s ) : converts seconds to either hours or minutes or seconds.
 
+takes two arguments :  seconds (`number`) , options (`object` optional)
+
 ```js
  const {s2h} = require('s2hms'); 
  const {s2m} = require('s2hms'); 
