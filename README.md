@@ -86,9 +86,9 @@ takes two arguments :  seconds (`number`) , options (`object` optional)
 | format | 'long', 'short' | `string` | none |
 | fallback | true, false | `boolean` | false |
 
-when fallback is set to true conversion auto downgrades to next unit when the resulting value is less than 1 (one), 
+when fallback is set to true, conversion auto downgrades to next unit if the resulting value is less than 1 (one), 
 
-**examples**
+**examples:**
 
 without fallback
 
