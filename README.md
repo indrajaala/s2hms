@@ -41,7 +41,7 @@ s2hms(8573, {format: 'long', separator: '__'})
 | **key** | **val** | **type** | **default val** |
 | --- | --- | --- | --- |
 | format |'long', 'short' | `string` | none |
-| separator |`string` any string char ':' , '+' , '=' , '_' ,'-' , etc... | `string` | ':' |
+| separator | any string char ':' , '+' , '=' , '_' ,'-' , etc... | `string` | ':' |
   
 example with separator: '/' and format: 'short'
 
