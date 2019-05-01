@@ -14,9 +14,10 @@ contains two types of modules :
 1. s2hms
 2. s2h, s2m, s2s
 
-takes two arguments :  seconds (`number`) , options (`object` optional)
 
 ### 1) s2hms : converts seconds to 'hms' format.
+
+takes two arguments :  seconds (`number`) , options (`object` optional)
 
 ```js
 const {s2hms} = require('s2hms');
