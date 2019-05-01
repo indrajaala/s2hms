@@ -8,7 +8,7 @@
     "test": "jest"
   },
   "author": "indrajaala",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "jest": "^24.5.0",
     "prettier": "^1.16.4"
