@@ -122,7 +122,7 @@ fallback can be used only when a format is specified , if no format is specified
 
 ```js
 s2h(634, {fallback: true});
-// => <span style=“color:red;”> Error: option'fallback:true' can only be used when a format is specified </span>
+// =>  Error: option'fallback:true' can only be used when a format is specified 
 ```
 
 
