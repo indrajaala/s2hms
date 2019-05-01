@@ -119,7 +119,8 @@ s2m(46, {format: 'long', fallback: true});
 
 **note:**
 fallback can be used only when a format is specified , if no format is specified and fallback is set to true , it will throw an error
-`Error: option'fallback:true' can only be used when a format is specified`
+`Error: option'fallback:true' can only be used when a format is specified`,
+this is to prevent confusion of unit of resulting value.
 
 
 ## License
