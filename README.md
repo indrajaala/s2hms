@@ -45,7 +45,9 @@ s2hms(8573, {format: 'long', separator: '__'})
   
   
   
-example with separator: '/' and format: 'short'
+ **example**
+ 
+ with separator: '/' and format: 'short'
 
 ```js
 s2hms(983, {format: 'short', separator: '/'});
