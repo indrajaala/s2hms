@@ -27,7 +27,7 @@ s2hms(24535, {format: 'long'});
 
 ```
 
-2) ( s2h, s2m, s2s ) : converts seconds to hours(s2h) or minutes(s2m) or seconds(s2s).
+2) ( s2h, s2m, s2s ) : converts seconds to hours or minutes or seconds.
 
 ```js
  const {s2h} = require('s2hms'); 
