@@ -86,6 +86,37 @@ takes two arguments :  seconds (`number`) , options (`object` optional)
 | format | 'long', 'short' | `string` | none |
 | fallback | true, false | `boolean` | false |
 
+when fallback is set to true conversion auto downgrades to next unit when the resulting value is less than 1 (one), 
+
+**examples**
+
+without fallback
+
+```js
+s2h(983, {format: 'short'});
+// => 0.3 h
+```
+with fallback set to true
+
+```js
+s2h(983, {format: 'short'});
+// => 16.4 m
+```
+
+without fallback
+
+```js
+s2m(46, {format: 'long'});
+// => 0.8 minute
+```
+
+with fallback set to true
+
+```js
+s2m(46, {format: 'long', fallback: true});
+// => 46 seconds
+```
+
 **note:**
 fallback can be used only when a format is specified , if no format is specified and fallback is set to true , it will throw an error
 `Error: option'fallback:true' can only be used when a format is specified`
