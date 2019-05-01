@@ -38,11 +38,18 @@ s2hms(8573, {format: 'long', separator: '__'})
 
 #### options
 
-| **key** | **val** | 
-| --- | --- |
-| format | 'long', 'short' |
-| seperator | any string char, ex: ':' , '=' , '_' , '-' , etc... |  
+| **key** | **val** | **default val** |
+| --- | --- | --- |
+| format | 'long', 'short' | none |
+| separator | any string char, ex: ':' , '=' , '_' , '-' , etc... | ':' |
+  
+example with separator '/' and format 'long'
 
+```js
+s2hms(9832, {format: 'short', separator: '/'});
+// => 2h/43m/52s
+
+```
 
 ### 2) ( s2h, s2m, s2s ) : converts seconds to either hours or minutes or seconds.
 
