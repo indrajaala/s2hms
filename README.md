@@ -99,7 +99,7 @@ s2h(983, {format: 'short'});
 with fallback set to true
 
 ```js
-s2h(983, {format: 'short'});
+s2h(983, {format: 'short', fallback: true});
 // => 16.4 m
 ```
 
