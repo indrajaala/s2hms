@@ -1,0 +1,7 @@
+
+
+test_async:
+  script:
+   - npm install
+   - npm run test
+
