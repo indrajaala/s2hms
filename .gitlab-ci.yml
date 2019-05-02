@@ -4,32 +4,19 @@
 image: node:latest
 
 
+
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
   paths:
   - node_modules/
 
-stages:
-  - build
-  - test
-  - deploy
+test:
+  script:
+   - npm install
+   - npm test
 
-
-
-install dependencies:
-  stage: build
-  script: 
-           - npm install
-
-Test:
-  stage: test
-  script: 
-          - npm test
-
-Publish:
-  stage: deploy
-  script: 
-          - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
-          - npm publish
-
+publish:
+  script:
+    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
+    - npm publish
