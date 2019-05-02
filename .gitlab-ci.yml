@@ -11,12 +11,12 @@ cache:
   paths:
   - node_modules/
 
-test:
+test and publish:
   script:
    - npm install
    - npm test
-
-publish:
-  script:
-    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
+   - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
     - npm publish
+
+
+    
