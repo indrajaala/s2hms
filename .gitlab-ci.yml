@@ -16,7 +16,7 @@ test and publish:
    - npm install
    - npm test
    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
-    - npm publish
+   - npm publish
 
 
     
