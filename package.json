@@ -1,7 +1,7 @@
 {
   "name": "s2hms",
   "version": "1.0.1",
-  "description": "convert seconds to HMS (or) hours, minutes, seconds independently",
+  "description": "convert seconds to HMS (or) to hours, minutes, seconds explicitly.",
   "main": "index.js",
   "scripts": {
     "test": "jest"
