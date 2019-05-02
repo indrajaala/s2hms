@@ -62,3 +62,8 @@ typings/
 
 # ide
 .idea
+
+# scratch files
+
+scratch.js
+scratch.html
