@@ -55,7 +55,7 @@ s2hms(983, {format: 'short', separator: '/'});
 
 ```
 
-### 2) ( s2h, s2m, s2s ) : converts seconds to either hours or minutes or seconds.
+### 2) ( s2h, s2m, s2s ) : converts seconds to hours, minutes, seconds explicitly.
 
 takes two arguments :  seconds (`number`) , options (`object` optional)
 
