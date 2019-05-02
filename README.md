@@ -4,7 +4,7 @@
 ## Install
 
 ```
-$ npm install --save s2hms
+npm install s2hms
 ```
 
 ## Usage
