@@ -1,6 +1,8 @@
 # s2hms
 > convert seconds to HMS (or) to hours, minutes, seconds explicitly.
 
+[![pipeline status](https://gitlab.com/indrajaala/s2hms/badges/master/pipeline.svg)](https://gitlab.com/indrajaala/s2hms/commits/master)
+
 ## Install
 
 ```

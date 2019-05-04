@@ -1,9 +1,5 @@
 const { s2hms, s2h, s2m, s2s } =  require("./index");
 
-// noinspection JSCheckFunctionSignatures
-console.log(s2hms(43784, {format: 'long'}));
-
-
 const invalidSecondsError =
   "Invalid value sent to s2hms, seconds must be a Number";
 

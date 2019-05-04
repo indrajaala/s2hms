@@ -10,7 +10,7 @@
   "files": ["index.js"],
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "author": "indrajaala",
   "license": "MIT",
