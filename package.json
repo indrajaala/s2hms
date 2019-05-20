@@ -6,8 +6,21 @@
     "url": "https://gitlab.com/indrajaala/s2hms.git"
   },
   "description": "convert seconds to HMS (or) to hours, minutes, seconds explicitly.",
-  "keywords": ["convert", "seconds","hours", "minutes", "duration", "hms", "time", "seconds to hours", "seconds to minutes", "seconds to hms" ],
-  "files": ["index.js"],
+  "keywords": [
+    "convert",
+    "seconds",
+    "hours",
+    "minutes",
+    "duration",
+    "hms",
+    "time",
+    "seconds to hours",
+    "seconds to minutes",
+    "seconds to hms"
+  ],
+  "files": [
+    "index.js"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage"
@@ -15,6 +28,8 @@
   "author": "indrajaala",
   "license": "MIT",
   "devDependencies": {
-    "jest": "^24.7.1"
-  }
+    "jest": "^24.7.1",
+    "prettier": "^1.17.1"
+  },
+  "dependencies": {}
 }

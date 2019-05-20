@@ -4,6 +4,12 @@ const isNumber = seconds => {
   }
 };
 
+const isValidFormat = (format, formats) => {
+  if (formats[format] === undefined) {
+    throw new Error(`Invalid format "${format}"`);
+  }
+};
+
 const s2hms = (seconds, options = {}) => {
   isNumber(seconds);
   const defaults = {
@@ -30,16 +36,18 @@ const s2hms = (seconds, options = {}) => {
 const getHMS = data => {
   const { format, separator, formats, time } = data;
   const hms = [];
+  isValidFormat(format, formats);
   time.forEach((val, index) => {
+    const formatString = `${formats[format][index]}`;
+    if (format === "standard") {
+      val = val < 10 ? `0${val}` : val;
+      return hms.push(`${val}${formatString}`);
+    }
     if (val !== 0) {
-      try {
-        if (format === "long" && val > 1) {
-          hms.push(`${val} ${formats[format][index]}s`);
-        } else {
-          hms.push(`${val}${formats[format][index]}`);
-        }
-      } catch (e) {
-        throw new Error(`Invalid format "${format}"`);
+      if (format === "long" && val > 1) {
+        return hms.push(`${val}${formatString}s`);
+      } else {
+        return hms.push(`${val}${formatString}`);
       }
     }
   });
@@ -48,10 +56,7 @@ const getHMS = data => {
 
 const getIndividualValue = data => {
   const { seconds, format, formats, unit, fallback, fallbackFunction } = data;
-  if (formats[format] === undefined) {
-    throw new Error(`Invalid format "${format}"`);
-  }
-
+  isValidFormat(format, formats);
   if (fallback === true) {
     if (format === "standard") {
       throw new Error(
