@@ -26,16 +26,19 @@ takes two arguments :  seconds (`number`) , options (`object` optional)
 const {s2hms} = require('s2hms');
 
 s2hms(4342);
-// => 1:12:22
+//  01:12:22
+
+s2hms(1432);
+//  00:23:52
 
 s2hms(64567, {format: 'short'});
-// => 17h:56m:7s
+//  17h:56m:7s
 
 s2hms(432, { format: "long" });
-// => 7 minutes:12 seconds
+//  7minutes:12seconds
 
 s2hms(8573, {format: 'long', separator: '__'})
-// => 2 hours__22 minutes__53 seconds
+//  2hours__22minutes__53seconds
 
 ```
 
@@ -63,22 +66,20 @@ s2hms(983, {format: 'short', separator: '/'});
 takes two arguments :  seconds (`number`) , options (`object` optional)
 
 ```js
- const {s2h} = require('s2hms'); 
- const {s2m} = require('s2hms'); 
- const {s2s} = require('s2hms'); 
-
+ const {s2h, s2m, s2s} = require('s2hms'); 
+ 
  s2h(43434);
- // => 12.1
+ //  12.1
  
  s2m(9832, { format: "short" });
- // => 163.9 m
+ //  163.9 m
  
  s2m(98907, { format: "long" });
- // => 1648.5 minutes
+ //  1648.5 minutes
  
  s2s(9832, { format: "short" });
- // => 9832 s
- 
+ //  9832 s
+
 
 ```
 
@@ -97,27 +98,27 @@ without fallback
 
 ```js
 s2h(983, {format: 'short'});
-// => 0.3 h
+//  0.3 h
 ```
 with fallback set to true
 
 ```js
 s2h(983, {format: 'short', fallback: true});
-// => 16.4 m
+//  16.4 m
 ```
 
 without fallback
 
 ```js
 s2m(46, {format: 'long'});
-// => 0.8 minute
+//  0.8 minute
 ```
 
 with fallback set to true
 
 ```js
 s2m(46, {format: 'long', fallback: true});
-// => 46 seconds
+//  46 seconds
 ```
 
 **note:**
@@ -125,9 +126,8 @@ fallback can be used only when a format is specified , if no format is specified
 
 ```js
 s2h(634, {fallback: true});
-// =>  Error: option'fallback:true' can only be used when a format is specified 
+//   Error: option'fallback:true' can only be used when a format is specified 
 ```
-
 
 ## License
 
