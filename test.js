@@ -1,4 +1,4 @@
-const { s2hms, s2h, s2m, s2s } =  require("./index");
+const { s2hms, s2h, s2m, s2s } = require("./index");
 
 const invalidSecondsError =
   "Invalid value sent to s2hms, seconds must be a Number";
@@ -25,6 +25,10 @@ describe("s2hms", () => {
     expect(s2hms(45020)).toBe("12:30:20");
     expect(s2hms(432, { format: "long" })).toBe("7minutes:12seconds");
     expect(s2hms(39090, { format: "standard" })).toBe("10:51:30");
+    expect(s2hms(1432)).toBe("00:23:52");
+    expect(s2hms(5445)).toBe("01:30:45");
+    expect(s2hms(54453)).toBe("15:07:33");
+    expect(s2hms(42243)).toBe("11:44:03");
     expect(s2hms(39090, { format: "short" })).toBe("10h:51m:30s");
     expect(s2hms(360, { format: "long" })).toBe("6minutes");
     expect(s2hms(540, { format: "short" })).toBe("9m");
