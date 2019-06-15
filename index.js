@@ -1,6 +1,8 @@
 const isNumber = seconds => {
   if (typeof seconds !== "number") {
-    throw new Error("Invalid value sent to s2hms, seconds must be a Number");
+    throw new TypeError(
+      "Invalid value sent to s2hms, seconds must be a Number"
+    );
   }
 };
 
