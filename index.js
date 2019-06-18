@@ -38,7 +38,7 @@ const s2hms = (seconds = 0, options = {}) => {
 const getHMS = data => {
   const { format, separator, formats, time } = data;
   let hms = []
-  let zeroCount = 0
+  let zeroValCount = 0
   isValidFormat(format, formats);
   time.forEach((val, index) => {
     const formatString = `${formats[format][index]}`;
@@ -54,8 +54,8 @@ const getHMS = data => {
         return hms.push(`${val}${formatString}`);
       }
     } else {
-      zeroCount += 1
-      if (zeroCount === 3) {
+      zeroValCount += 1
+      if (zeroValCount === 3) {
         if (format === 'long') {
           hms.push(`0${formatString}s`)
         } else {
