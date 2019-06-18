@@ -23,21 +23,21 @@ describe("s2hms", () => {
 
   test("converts seconds into hours minutes seconds", () => {
     expect(s2hms(45020)).toBe("12:30:20");
-    expect(s2hms(432, { format: "long" })).toBe("7minutes:12seconds");
+    expect(s2hms(432, { format: 'long' })).toBe('07minutes:12seconds')
     expect(s2hms(39090, { format: "standard" })).toBe("10:51:30");
     expect(s2hms(1432)).toBe("00:23:52");
     expect(s2hms(5445)).toBe("01:30:45");
     expect(s2hms(54453)).toBe("15:07:33");
     expect(s2hms(42243)).toBe("11:44:03");
     expect(s2hms(39090, { format: "short" })).toBe("10h:51m:30s");
-    expect(s2hms(360, { format: "long" })).toBe("6minutes");
-    expect(s2hms(540, { format: "short" })).toBe("9m");
+    expect(s2hms(360, { format: 'long' })).toBe('06minutes')
+    expect(s2hms(540, { format: 'short' })).toBe('09m')
     expect(s2hms(36, { format: "long" })).toBe("36seconds");
     expect(s2hms(45039, { format: "standard", separator: "_" })).toBe(
       "12_30_39"
     );
     expect(s2hms(23432, { format: "short", separator: "-" })).toBe(
-      "6h-30m-32s"
+      '06h-30m-32s',
     );
   });
 });

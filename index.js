@@ -12,7 +12,7 @@ const isValidFormat = (format, formats) => {
   }
 };
 
-const s2hms = (seconds, options = {}) => {
+const s2hms = (seconds = 0, options = {}) => {
   isNumber(seconds);
   const defaults = {
     format: "standard",
@@ -37,7 +37,8 @@ const s2hms = (seconds, options = {}) => {
 
 const getHMS = data => {
   const { format, separator, formats, time } = data;
-  const hms = [];
+  let hms = []
+  let zeroCount = 0
   isValidFormat(format, formats);
   time.forEach((val, index) => {
     const formatString = `${formats[format][index]}`;
@@ -46,10 +47,20 @@ const getHMS = data => {
       return hms.push(`${val}${formatString}`);
     }
     if (val !== 0) {
+      val = val < 10 ? `0${val}` : val
       if (format === "long" && val > 1) {
         return hms.push(`${val}${formatString}s`);
       } else {
         return hms.push(`${val}${formatString}`);
+      }
+    } else {
+      zeroCount += 1
+      if (zeroCount === 3) {
+        if (format === 'long') {
+          hms.push(`0${formatString}s`)
+        } else {
+          hms.push(`0${formatString}`)
+        }
       }
     }
   });
@@ -85,7 +96,7 @@ const getIndividualValue = data => {
   }
 };
 
-const s2h = (seconds, options = {}) => {
+const s2h = (seconds = 0, options = {}) => {
   isNumber(seconds);
   const defaults = {
     format: "standard",
@@ -102,7 +113,7 @@ const s2h = (seconds, options = {}) => {
   return getIndividualValue(data);
 };
 
-const s2m = (seconds, options = {}) => {
+const s2m = (seconds = 0, options = {}) => {
   isNumber(seconds);
   const defaults = {
     format: "standard",
@@ -119,7 +130,7 @@ const s2m = (seconds, options = {}) => {
   return getIndividualValue(data);
 };
 
-const s2s = (seconds, options = {}) => {
+const s2s = (seconds = 0, options = {}) => {
   isNumber(seconds);
   const defaults = { format: "standard" };
   const data = {
