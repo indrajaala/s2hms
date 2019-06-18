@@ -35,10 +35,10 @@ s2hms(64567, {format: 'short'});
 //  17h:56m:7s
 
 s2hms(432, { format: "long" });
-//  7minutes:12seconds
+//  07minutes:12seconds
 
 s2hms(8573, {format: 'long', separator: '__'})
-//  2hours__22minutes__53seconds
+//  02hours__22minutes__53seconds
 
 ```
 
