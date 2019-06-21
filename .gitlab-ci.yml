@@ -15,18 +15,18 @@ stages:
 
 test:
   stage: test
+  only:
+    refs:
+      - master
   script:
     - npm install
     - npm test
 
 publish:
   stage: deploy
+  only:
+    refs:
+      - master
   script:
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
     - npm publish
-
-job:
-  only:
-    - branches
-  except:
-    - tags
