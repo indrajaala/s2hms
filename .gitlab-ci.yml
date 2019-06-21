@@ -24,3 +24,9 @@ publish:
   script:
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
     - npm publish
+
+job:
+  only:
+    - branches
+  except:
+    - tags

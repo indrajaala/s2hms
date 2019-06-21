@@ -37,29 +37,47 @@ const s2hms = (seconds = 0, options = {}) => {
 
 const getHMS = data => {
   const { format, separator, formats, time } = data;
-  let hms = []
-  let zeroValCount = 0
+  let hms = [];
+  let zeroValCount = 0;
   isValidFormat(format, formats);
   time.forEach((val, index) => {
-    const formatString = `${formats[format][index]}`;
+    const formatValue = ({
+      value = val,
+      formatString = formats[format][index],
+      postfix = ""
+    } = {}) => {
+      return `${value}${formatString}${postfix}`;
+    };
+
     if (format === "standard") {
       val = val < 10 ? `0${val}` : val;
-      return hms.push(`${val}${formatString}`);
+      return hms.push(formatValue());
     }
-    if (val !== 0) {
-      val = val < 10 ? `0${val}` : val
-      if (format === "long" && val > 1) {
-        return hms.push(`${val}${formatString}s`);
-      } else {
-        return hms.push(`${val}${formatString}`);
-      }
-    } else {
-      zeroValCount += 1
-      if (zeroValCount === 3) {
-        if (format === 'long') {
-          hms.push(`0${formatString}s`)
+
+    val = val !== 0 && val < 10 ? `0${val}` : val;
+
+    if (format === "long") {
+      if (val !== 0) {
+        if (val > 1) {
+          return hms.push(formatValue({ postfix: "s" }));
         } else {
-          hms.push(`0${formatString}`)
+          return hms.push(formatValue());
+        }
+      } else {
+        zeroValCount += 1;
+        if (zeroValCount === 3) {
+          return hms.push(formatValue({ value: 0, postfix: "s" }));
+        }
+      }
+    }
+
+    if (format === "short") {
+      if (val !== 0) {
+        return hms.push(formatValue());
+      } else {
+        zeroValCount += 1;
+        if (zeroValCount === 3) {
+          return hms.push(formatValue({ value: 0 }));
         }
       }
     }
@@ -67,9 +85,10 @@ const getHMS = data => {
   return hms.join(separator);
 };
 
-const getIndividualValue = data => {
+const getExplicitValue = data => {
   const { seconds, format, formats, unit, fallback, fallbackFunction } = data;
   isValidFormat(format, formats);
+
   if (fallback === true) {
     if (format === "standard") {
       throw new Error(
@@ -81,18 +100,32 @@ const getIndividualValue = data => {
     }
   }
 
-  try {
-    if (format === "long" && unit > 1) {
-      return `${unit} ${formats[format]}s`;
-    }
+  const formatValue = ({
+    value = unit,
+    formatString = formats[format],
+    postfix = ""
+  } = {}) => {
+    return `${value} ${formatString}${postfix}`;
+  };
 
-    if (format === "standard") {
-      return Number(unit);
-    } else {
-      return `${unit} ${formats[format]}`;
+  if (format === "standard") {
+    return Number(unit);
+  }
+  if (format === "long") {
+    if (unit < 1) {
+      return formatValue({ value: 0, postfix: "s" });
     }
-  } catch (e) {
-    throw new Error(e);
+    if (unit > 1) {
+      return formatValue({ postfix: "s" });
+    } else {
+      return formatValue();
+    }
+  }
+  if (format === "short") {
+    if (unit < 1) {
+      return formatValue({ value: 0 });
+    }
+    return formatValue();
   }
 };
 
@@ -100,46 +133,50 @@ const s2h = (seconds = 0, options = {}) => {
   isNumber(seconds);
   const defaults = {
     format: "standard",
-    fallback: false
+    fallback: false,
+    name: "s2h",
+    fallbackFunction: s2m
   };
-
   const data = {
     ...{ seconds, ...defaults, ...options },
     formats: { short: "h", long: "hour", standard: "" },
-    unit: (seconds / 3600).toFixed(1),
-    fallbackFunction: s2m
+    unit: (seconds / 3600).toFixed(1)
   };
 
-  return getIndividualValue(data);
+  return getExplicitValue(data);
 };
 
 const s2m = (seconds = 0, options = {}) => {
   isNumber(seconds);
   const defaults = {
     format: "standard",
-    fallback: false
+    fallback: false,
+    name: "s2m",
+    fallbackFunction: s2s
   };
 
   const data = {
     ...{ seconds, ...defaults, ...options },
     formats: { short: "m", long: "minute", standard: "" },
-    unit: (seconds / 60).toFixed(1),
-    fallbackFunction: s2s
+    unit: (seconds / 60).toFixed(1)
   };
 
-  return getIndividualValue(data);
+  return getExplicitValue(data);
 };
 
 const s2s = (seconds = 0, options = {}) => {
   isNumber(seconds);
-  const defaults = { format: "standard" };
+  const defaults = {
+    format: "standard",
+    name: "s2s"
+  };
   const data = {
     ...{ seconds, ...defaults, ...options },
     formats: { short: "s", long: "second", standard: "" },
     unit: seconds
   };
 
-  return getIndividualValue(data);
+  return getExplicitValue(data);
 };
 
 module.exports = { s2hms, s2h, s2m, s2s };
