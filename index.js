@@ -1,3 +1,6 @@
+//==============================================================================
+// Checks
+//==============================================================================
 const isNumber = seconds => {
   if (typeof seconds !== "number") {
     throw new TypeError(
@@ -6,11 +9,15 @@ const isNumber = seconds => {
   }
 };
 
-const isValidFormat = (format, formats) => {
+const isValidFormat = ({ format, formats } = {}) => {
   if (formats[format] === undefined) {
     throw new Error(`Invalid format "${format}"`);
   }
 };
+
+//==============================================================================
+// Module - s2hms
+//==============================================================================
 
 const s2hms = (seconds = 0, options = {}) => {
   isNumber(seconds);
@@ -18,76 +25,101 @@ const s2hms = (seconds = 0, options = {}) => {
     format: "standard",
     separator: ":"
   };
-
-  const data = {
-    ...{ ...defaults, ...options },
-    formats: {
-      short: ["h", "m", "s"],
-      long: ["hour", "minute", "second"],
-      standard: ["", "", ""]
-    },
-    time: [
-      Math.floor(seconds / 60 / 60),
-      Math.floor((seconds / 60) % 60),
-      Math.floor(seconds % 60)
-    ]
+  options = { ...defaults, ...options };
+  const formats = {
+    short: ["h", "m", "s"],
+    long: ["hour", "minute", "second"],
+    standard: ["", "", ""]
   };
-  return getHMS(data);
-};
 
-const getHMS = data => {
-  const { format, separator, formats, time } = data;
-  let hms = [];
-  let zeroValCount = 0;
-  isValidFormat(format, formats);
-  time.forEach((val, index) => {
-    const formatValue = ({
-      value = val,
-      formatString = formats[format][index],
-      postfix = ""
-    } = {}) => {
-      return `${value}${formatString}${postfix}`;
+  const time = [
+    Math.floor(seconds / 60 / 60),
+    Math.floor((seconds / 60) % 60),
+    Math.floor(seconds % 60)
+  ];
+
+  const data = () => {
+    return {
+      ...options,
+      formats: { ...formats },
+      time: [...time]
     };
+  };
 
-    if (format === "standard") {
-      val = val < 10 ? `0${val}` : val;
-      return hms.push(formatValue());
+  const nonZeroCondition = ({ val, format }) => {
+    return format === "standard" || val !== 0;
+  };
+
+  const formatValue = ({ val, index, format, formats }) => {
+    const value = setValue({ format, val });
+    const prefix = setPrefix({ val, format });
+    const formatString = formats[format][index];
+    const postFix = setPostFix({ val, format });
+    return `${prefix}${value}${formatString}${postFix}`;
+  };
+
+  const setPrefix = ({ val, format }) => {
+    if (nonZeroCondition({ val, format })) {
+      return val < 10 ? 0 : "";
     }
 
-    val = val !== 0 && val < 10 ? `0${val}` : val;
+    if (val === 0) {
+      return "";
+    }
+  };
 
-    if (format === "long") {
-      if (val !== 0) {
-        if (val > 1) {
-          return hms.push(formatValue({ postfix: "s" }));
-        } else {
-          return hms.push(formatValue());
-        }
-      } else {
+  const setPostFix = ({ val, format }) => {
+    if ((val === 0 && format === "long") || (val > 1 && format === "long")) {
+      return "s";
+    }
+
+    return "";
+  };
+
+  const setValue = ({ format, val }) => {
+    if (nonZeroCondition({ val, format })) {
+      return val;
+    }
+
+    if (val === 0) {
+      return 0;
+    }
+  };
+
+  const addSeparator = ({ hms, separator }) => {
+    return hms.join(separator);
+  };
+
+  const makeHms = data => {
+    const { time, format, formats, separator } = data;
+    isValidFormat({ format, formats });
+    let hms = [];
+    let zeroValCount = 0;
+    time.forEach((val, index) => {
+      if (nonZeroCondition({ val, format })) {
+        return hms.push(formatValue({ index, val, format, formats }));
+      }
+
+      if (val === 0) {
         zeroValCount += 1;
         if (zeroValCount === 3) {
-          return hms.push(formatValue({ value: 0, postfix: "s" }));
+          return hms.push(formatValue({ index, val: 0, format, formats }));
         }
       }
-    }
+    });
+    return addSeparator({ hms, separator });
+  };
 
-    if (format === "short") {
-      if (val !== 0) {
-        return hms.push(formatValue());
-      } else {
-        zeroValCount += 1;
-        if (zeroValCount === 3) {
-          return hms.push(formatValue({ value: 0 }));
-        }
-      }
-    }
-  });
-  return hms.join(separator);
+  return makeHms(data());
 };
+
+//==============================================================================
+// Modules - s2h, s2m, s2s
+//==============================================================================
 
 const getExplicitValue = data => {
   const { seconds, format, formats, unit, fallback, fallbackFunction } = data;
-  isValidFormat(format, formats);
+  isValidFormat({ format, formats });
 
   if (fallback === true) {
     if (format === "standard") {
