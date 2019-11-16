@@ -178,7 +178,7 @@ const s2h = (seconds = 0, options = {}) => {
   const defaults = {
     format: "standard",
     fallback: false,
-    name: "s2h",
+
     fallbackFunction: s2m
   };
   const data = () => {
@@ -197,7 +197,7 @@ const s2m = (seconds = 0, options = {}) => {
   const defaults = {
     format: "standard",
     fallback: false,
-    name: "s2m",
+
     fallbackFunction: s2s
   };
 
@@ -215,8 +215,7 @@ const s2m = (seconds = 0, options = {}) => {
 const s2s = (seconds = 0, options = {}) => {
   isNumber(seconds);
   const defaults = {
-    format: "standard",
-    name: "s2s"
+    format: "standard"
   };
   const data = () => {
     return {
