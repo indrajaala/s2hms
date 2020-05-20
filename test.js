@@ -1,4 +1,4 @@
-const { s2hms, s2h, s2m, s2s } = require("./index");
+import { s2hms, s2h, s2m, s2s } from "./index";
 
 const invalidSecondsError =
   "Invalid value sent to s2hms, seconds must be a Number";

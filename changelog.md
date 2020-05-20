@@ -1,7 +1,5 @@
-## 1.0.4
+v2.0
 
-- Add changelog.md , keywords in package.json
+breaking changes:
 
-## 1.1.0
-
-- Refactored code more declarative, no breaking changes.
+- es module conversion

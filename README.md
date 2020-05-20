@@ -23,7 +23,7 @@ contains two types of modules :
 takes two arguments : seconds (`number`) , options (`object` optional)
 
 ```js
-const { s2hms } = require("s2hms");
+import { s2hms } from "s2hms";
 
 s2hms(4342);
 //  01:12:22
@@ -62,7 +62,7 @@ s2hms(983, { format: "short", separator: "/" });
 takes two arguments : seconds (`number`) , options (`object` optional)
 
 ```js
-const { s2h, s2m, s2s } = require("s2hms");
+import { s2h, s2m, s2s } from "s2hms";
 
 s2h(43434);
 //  12.1

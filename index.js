@@ -228,4 +228,4 @@ const s2s = (seconds = 0, options = {}) => {
   return makeExplicitTimeUnit({ ...data() });
 };
 
-module.exports = { s2hms, s2h, s2m, s2s };
+export { s2hms, s2h, s2m, s2s };
