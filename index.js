@@ -1,7 +1,7 @@
 //==============================================================================
 // Checks
 //==============================================================================
-const isNumber = seconds => {
+const isNumber = (seconds) => {
   if (typeof seconds !== "number") {
     throw new TypeError(
       "Invalid value sent to s2hms, seconds must be a Number"
@@ -23,49 +23,31 @@ const s2hms = (seconds = 0, options = {}) => {
   isNumber(seconds);
   const defaults = {
     format: "standard",
-    separator: ":"
+    separator: ":",
   };
   options = { ...defaults, ...options };
   const formats = {
     short: ["h", "m", "s"],
     long: ["hour", "minute", "second"],
-    standard: ["", "", ""]
+    standard: ["", "", ""],
   };
 
   const time = [
     Math.floor(seconds / 60 / 60),
     Math.floor((seconds / 60) % 60),
-    Math.floor(seconds % 60)
+    Math.floor(seconds % 60),
   ];
 
   const data = () => {
     return {
       ...options,
       formats: { ...formats },
-      time: [...time]
+      time: [...time],
     };
   };
 
   const nonZeroCondition = ({ val, format }) => {
     return format === "standard" || val !== 0;
-  };
-
-  const formatValue = ({ val, index, format, formats }) => {
-    const value = setValue({ format, val });
-    const prefix = setPrefix({ val, format });
-    const formatString = formats[format][index];
-    const postFix = setPostFix({ val, format });
-    return `${prefix}${value}${formatString}${postFix}`;
-  };
-
-  const setPrefix = ({ val, format }) => {
-    if (nonZeroCondition({ val, format })) {
-      return val < 10 ? 0 : "";
-    }
-
-    if (val === 0) {
-      return "";
-    }
   };
 
   const setPostFix = ({ val, format }) => {
@@ -78,7 +60,7 @@ const s2hms = (seconds = 0, options = {}) => {
 
   const setValue = ({ format, val }) => {
     if (nonZeroCondition({ val, format })) {
-      return val;
+      return String(val).padStart(2, "0");
     }
 
     if (val === 0) {
@@ -86,11 +68,18 @@ const s2hms = (seconds = 0, options = {}) => {
     }
   };
 
+  const formatValue = ({ val, index, format, formats }) => {
+    const value = setValue({ format, val });
+    const formatString = formats[format][index];
+    const postFix = setPostFix({ val, format });
+    return `${value}${formatString}${postFix}`;
+  };
+
   const addSeparator = ({ hms, separator }) => {
     return hms.join(separator);
   };
 
-  const makeHms = data => {
+  const makeHms = (data) => {
     const { time, format, formats, separator } = data;
     isValidFormat({ format, formats });
     let hms = [];
@@ -117,7 +106,7 @@ const s2hms = (seconds = 0, options = {}) => {
 // Modules - s2h, s2m, s2s
 //==============================================================================
 
-const makeExplicitTimeUnit = data => {
+const makeExplicitTimeUnit = (data) => {
   const { seconds, format, formats, val, fallback, fallbackFunction } = data;
   isValidFormat({ format, formats });
 
@@ -126,7 +115,7 @@ const makeExplicitTimeUnit = data => {
     val,
     fallback,
     seconds,
-    fallbackFunction
+    fallbackFunction,
   }) => {
     if (fallback === true) {
       if (format === "standard") {
@@ -179,13 +168,13 @@ const s2h = (seconds = 0, options = {}) => {
     format: "standard",
     fallback: false,
 
-    fallbackFunction: s2m
+    fallbackFunction: s2m,
   };
   const data = () => {
     return {
       ...{ seconds, ...defaults, ...options },
       formats: { short: "h", long: "hour", standard: "" },
-      val: (seconds / 3600).toFixed(1)
+      val: (seconds / 3600).toFixed(1),
     };
   };
 
@@ -198,14 +187,14 @@ const s2m = (seconds = 0, options = {}) => {
     format: "standard",
     fallback: false,
 
-    fallbackFunction: s2s
+    fallbackFunction: s2s,
   };
 
   const data = () => {
     return {
       ...{ seconds, ...defaults, ...options },
       formats: { short: "m", long: "minute", standard: "" },
-      val: (seconds / 60).toFixed(1)
+      val: (seconds / 60).toFixed(1),
     };
   };
 
@@ -215,13 +204,13 @@ const s2m = (seconds = 0, options = {}) => {
 const s2s = (seconds = 0, options = {}) => {
   isNumber(seconds);
   const defaults = {
-    format: "standard"
+    format: "standard",
   };
   const data = () => {
     return {
       ...{ seconds, ...defaults, ...options },
       formats: { short: "s", long: "second", standard: "" },
-      val: seconds
+      val: seconds,
     };
   };
 
