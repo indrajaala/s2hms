@@ -1,9 +1,10 @@
 # s2hms
 
-> convert seconds to HMS (or) to hours, minutes, seconds explicitly.
+[![npm][npm-img]][npm-url]
+[![pipeline status][pipeline-status-img]][repo-url]
+[![coverage report][coverage-report-img]][repo-url]
 
-[![pipeline status](https://gitlab.com/indrajaala/s2hms/badges/master/pipeline.svg)](https://gitlab.com/indrajaala/s2hms/commits/master)
-[![coverage report](https://gitlab.com/indrajaala/s2hms/badges/master/coverage.svg)](https://gitlab.com/indrajaala/s2hms/commits/master)
+> convert seconds to HMS (or) to hours, minutes, seconds explicitly.
 
 ## Install
 
@@ -127,3 +128,9 @@ s2h(634, { fallback: true });
 ## License
 
 MIT
+
+[npm-img]: https://img.shields.io/npm/v/s2hms.svg
+[npm-url]: https://npmjs.com/package/s2hms
+[pipeline-status-img]: https://gitlab.com/indrajaala/s2hms/badges/master/pipeline.svg
+[coverage-report-img]: https://gitlab.com/indrajaala/s2hms/badges/master/coverage.svg
+[repo-url]: https://gitlab.com/indrajaala/s2hms/commits/master
