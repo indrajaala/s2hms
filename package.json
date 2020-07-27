@@ -1,6 +1,6 @@
 {
   "name": "s2hms",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/indrajaala/s2hms.git"
@@ -19,10 +19,12 @@
     "seconds to hms"
   ],
   "files": [
-    "index.js"
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "node_modules/rollup/dist/bin/rollup -c",
     "test": "jest --coverage"
   },
   "jest": {
@@ -33,10 +35,12 @@
   "author": "indrajaala",
   "license": "MIT",
   "devDependencies": {
-    "@babel/preset-env": "^7.9.6",
-    "babel-jest": "^26.0.1",
-    "jest": "^26.0.1",
+    "@babel/preset-env": "^7.10.4",
+    "babel-jest": "^26.1.0",
+    "jest": "^26.1.0",
     "prettier": "^2.0.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "rollup": "^2.23.0"
+  }
 }

@@ -1,4 +1,4 @@
-import { s2hms, s2h, s2m, s2s } from "./index";
+import { s2hms, s2h, s2m, s2s } from "./src/index";
 
 const invalidSecondsError =
   "Invalid value sent to s2hms, seconds must be a Number";
