@@ -1,13 +1,19 @@
+import pkg from "./package.json";
+
 export default {
   input: "src/index.js",
   output: [
     {
-      file: "dist/index.js",
+      file: pkg.browser,
       format: "umd",
       name: "s2hms",
     },
     {
-      file: "dist/index.esm.js",
+      file: pkg.main,
+      format: "cjs",
+    },
+    {
+      file: pkg.module,
       format: "es",
     },
   ],
