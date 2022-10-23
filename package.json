@@ -1,6 +1,10 @@
 {
   "name": "s2hms",
-  "version": "0.0.0",
+  "version": "3.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/indrajaala/s2hms.git"
+  },
   "type": "module",
   "description": "convert seconds to HMS (or) to hours, minutes, seconds explicitly.",
   "author": "indrajaala",
