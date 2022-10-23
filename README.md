@@ -2,6 +2,7 @@
 
 [![npm][npm-img]][npm-url]
 ![example workflow](https://github.com/indrajaala/s2hms/actions/workflows/test.yml/badge.svg)
+![example workflow](https://github.com/indrajaala/s2hms/actions/workflows/npm-publish.yml/badge.svg)
 
 > convert seconds to HMS (or) to hours, minutes, seconds explicitly.
 
