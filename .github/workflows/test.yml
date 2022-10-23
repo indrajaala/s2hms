@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ "master" ]
 
-test:
+jobs:
   build:
 
     runs-on: ubuntu-latest
@@ -27,4 +27,4 @@ test:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm test
+    - run: npm run test
